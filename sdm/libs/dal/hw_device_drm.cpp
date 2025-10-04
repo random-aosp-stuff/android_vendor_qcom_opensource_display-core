@@ -1236,7 +1236,7 @@ DisplayError HWDeviceDRM::GetHWPanelInfo(HWPanelInfo *panel_info) {
 
 void HWDeviceDRM::SetDisplaySwitchMode(uint32_t index) {
   if (current_mode_index_ == index && !first_cycle_) {
-    DLOGI("Mode %d already set", index);
+    DLOGV("Mode %d already set", index);
     return;
   }
   uint32_t mode_flag = 0;
@@ -3007,7 +3007,7 @@ void HWDeviceDRM::UpdateMixerAttributes() {
     }
   }
 
-  DLOGI("Mixer WxH %dx%d-%d for %s", mixer_attributes_.width, mixer_attributes_.height,
+  DLOGV("Mixer WxH %dx%d-%d for %s", mixer_attributes_.width, mixer_attributes_.height,
         mixer_attributes_.split_type, device_name_);
   update_mode_ = true;
 }
@@ -3546,7 +3546,7 @@ uint64_t HWDeviceDRM::GetSupportedBitClkRate(uint32_t new_mode_index,
          bit_clk_rate_request) != curr_sub_mode.dyn_bitclk_list.end())) {
       return bit_clk_rate_request;
     } else {
-      DLOGW("Requested rate not supported: %" PRIu64, bit_clk_rate_request);
+      DLOGV("Requested rate not supported: %" PRIu64, bit_clk_rate_request);
       return connector_info_.modes[current_mode_index_].curr_bit_clk_rate;
     }
   }
